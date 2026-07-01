@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://abetaiwan.github.io/nihon-asia-koryu/sitemap.xml
