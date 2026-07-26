@@ -2468,6 +2468,8 @@
       <p class="quick-btns-hint">👆 クリックすると下のフォームに内容が入力されます</p>
 
       <form id="contact-form" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="site" value="nihon-asia-koryu">
+        <input type="hidden" name="_subject" value="【日本・アジア自治体交流協会】お問い合わせ">
         <div class="form-group">
           <label for="email">メールアドレス<span class="req">＊</span></label>
           <input type="email" id="email" name="email" placeholder="例：taro@city.example.jp" required>
@@ -3300,20 +3302,35 @@
   }
 
   /* --- Contact form submit --- */
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('.btn-submit');
+    const form = e.target;
+    const btn = form.querySelector('.btn-submit');
+    const originalText = btn.textContent;
     btn.textContent = '送信中…';
     btn.style.opacity = '0.7';
     btn.disabled = true;
 
-    setTimeout(() => {
-      alert('✅ お問い合わせを受け付けました。\nご返信まで今しばらくお待ちください。\n\n一般社団法人 日本・アジア自治体交流協会');
-      e.target.reset();
-      btn.textContent = '✉️　送信する';
+    try {
+      const response = await fetch('https://formspree.io/f/mjgngapw', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        alert('✅ お問い合わせを受け付けました。\nご返信まで今しばらくお待ちください。\n\n一般社団法人 日本・アジア自治体交流協会');
+        form.reset();
+      } else {
+        alert('⚠️ 送信に失敗しました。恐れ入りますが、時間をおいて再度お試しいただくか、お手数ですが別の方法でご連絡ください。');
+      }
+    } catch (error) {
+      alert('⚠️ 通信エラーが発生しました。恐れ入りますが、時間をおいて再度お試しください。');
+    } finally {
+      btn.textContent = originalText;
       btn.style.opacity = '1';
       btn.disabled = false;
-    }, 800);
+    }
   }
 </script>
 </body>
