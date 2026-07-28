@@ -554,6 +554,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       display: block;
       transition: transform 0.35s;
     }
@@ -1140,6 +1141,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 20%;
       display: block;
     }
 
@@ -1524,11 +1526,15 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       display: block;
       transition: transform 0.35s;
     }
 
     .gallery-card:hover .gallery-img-wrap img { transform: scale(1.05); }
+
+    .gallery-img-wrap.doc { background: #f4f4f0; }
+    .gallery-img-wrap.doc img { object-fit: contain; }
 
     /* プレースホルダー（写真未配置時） */
     .gallery-placeholder {
@@ -1646,7 +1652,8 @@
 
     .lightbox-img-wrap {
       width: 100%;
-      aspect-ratio: 16 / 9;
+      max-height: 80vh;
+      aspect-ratio: auto;
       background: linear-gradient(135deg, #1a3a4a 0%, #0d2b35 100%);
       border-radius: 10px;
       overflow: hidden;
@@ -1658,7 +1665,7 @@
     .lightbox-img-wrap img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
 
     .lightbox-placeholder {
@@ -3076,7 +3083,8 @@
       category: "taiwan", categoryLabel: "台湾・海外交流",
       title: "台湾発 みなかみ町ツアーパンフレット",
       desc: "台湾の旅行会社が企画した「秋楓紅浪漫 東京群馬水上町秘境温泉五日」ツアーパンフ。谷川岳の紅葉・温泉・たくみの里など、みなかみ町の魅力が台湾人向けにPRされています。インバウンド約10倍の実証です。",
-      date: "2019年"
+      date: "2019年",
+      fit: "contain"
     },
     {
       src: "images/gallery/gallery_17.jpg",
@@ -3090,7 +3098,8 @@
       category: "minakami", categoryLabel: "みなかみ町での活動",
       title: "台南市長「マンゴー大量購入に謝意」 台湾メディア掲載",
       desc: "みなかみ町が3,200kgの台南産マンゴーを購入したことに台南市長が謝意を表明。MINAKAMI CITYのTシャツ姿の阿部氏が台湾メディアに掲載されました。物産交流が友好都市のシンボルに。",
-      date: "2021年"
+      date: "2021年",
+      fit: "contain"
     },
     {
       src: "images/gallery/gallery_19.jpg",
@@ -3143,7 +3152,7 @@
 
     /* ── 画像エリア（16:9） ── */
     const imgWrap = document.createElement('div');
-    imgWrap.className = 'gallery-img-wrap';
+    imgWrap.className = 'gallery-img-wrap' + (item.fit === 'contain' ? ' doc' : '');
 
     /* プレースホルダーを先に表示 */
     const placeholder = document.createElement('div');
@@ -3155,7 +3164,9 @@
     /* 画像をロード（ハンドラをsrc設定より先に登録） */
     const img = document.createElement('img');
     img.alt = item.title;
-    img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+    img.style.cssText = item.fit === 'contain'
+      ? 'width:100%;height:100%;object-fit:contain;display:block;'
+      : 'width:100%;height:100%;object-fit:cover;display:block;';
     img.onload = () => {
       imgWrap.innerHTML = '';
       imgWrap.appendChild(img);
@@ -3266,7 +3277,7 @@
     /* ハンドラをsrcより先に設定 */
     const img = document.createElement('img');
     img.alt = item.title;
-    img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+    img.style.cssText = 'max-width:100%;max-height:80vh;width:auto;height:auto;object-fit:contain;display:block;';
     img.onload  = () => { wrap.innerHTML = ''; wrap.appendChild(img); };
     img.onerror = () => {
       wrap.innerHTML = `<div class="lightbox-placeholder">
