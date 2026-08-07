@@ -1095,93 +1095,6 @@
 
     .faq-cta { text-align: center; }
 
-    /* ===== PROFILE SECTION ===== */
-    #profile { background: #EEF2FF; }
-
-    .profile-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .profile-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 32px 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
-
-    .profile-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 36px rgba(0,188,212,0.18);
-    }
-
-    .profile-photo-wrap {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-bottom: 18px;
-      background: linear-gradient(135deg, #B2EBF2, #E0F7FA);
-      border: 4px solid var(--border);
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .profile-photo-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      display: block;
-    }
-
-    .profile-photo-placeholder {
-      font-size: 2.8rem;
-      color: rgba(1,87,155,0.3);
-    }
-
-    .profile-role {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--sky);
-      margin-bottom: 4px;
-    }
-
-    .profile-name {
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: var(--text);
-      margin-bottom: 2px;
-    }
-
-    .profile-name-en {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .profile-bio {
-      font-size: 0.86rem;
-      color: var(--muted);
-      line-height: 1.9;
-      text-align: left;
-    }
-
-    @media (max-width: 680px) {
-      .profile-grid { grid-template-columns: 1fr; }
-    }
-
     /* ===== QUICK BUTTONS (contact) ===== */
     .quick-btns {
       display: flex;
@@ -2413,45 +2326,6 @@
 
     <div class="faq-cta fade-up">
       <a href="#contact" class="btn-primary">📩 相談してみる</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SECTION: プロフィール ===== -->
-<section id="profile" class="section section-alt">
-  <div class="container">
-    <h2 class="section-title fade-up">ご相談をお受けする<span>メンバー紹介</span></h2>
-    <div class="divider fade-up"></div>
-    <p class="section-subtitle fade-up">みなかみ町9年間の実績と全国ネットワークを持つメンバーが対応します</p>
-
-    <div class="profile-grid">
-
-      <div class="profile-card fade-up">
-        <div class="profile-photo-wrap">
-          <img src="images/profile/kubo.jpg" alt="久保 博"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="profile-photo-placeholder" style="display:none;">👤</div>
-        </div>
-        <div class="profile-role">代表理事</div>
-        <div class="profile-name">久保　博</div>
-        <div class="profile-name-en">Kubo Hiroshi</div>
-        <div class="profile-bio">
-          <!-- プロフィール文を挿入 -->
-        </div>
-      </div>
-
-      <div class="profile-card fade-up">
-        <div class="profile-photo-wrap">
-          <img src="images/profile/abe.jpg" alt="阿部 真行"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="profile-photo-placeholder" style="display:none;">👤</div>
-        </div>
-        <div class="profile-role">理事 / 阿部真行方式 実践者</div>
-        <div class="profile-name">阿部　真行</div>
-        <div class="profile-name-en">Abe Masayuki</div>
-        <div class="profile-bio">9年間にわたり台南市政府内に勤務し、みなかみ町の台湾インバウンドを5年で約10倍に。台湾政府より「日台交流に特殊貢献した外国人」として特別永住ビザ授与。地方公務員アワード2023受賞。次世代地方創世マガジン「Ambitions REGION」創刊号に特集掲載。</div>
-      </div>
-
     </div>
   </div>
 </section>
